@@ -1,0 +1,20 @@
+{
+  // JSON Schema for editor autocomplete/validation
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+
+  // Plugins enable additional rule sets on top of oxlint's core rules
+  "plugins": [
+    "react", // React-specific rules (hooks, JSX, etc.)
+    "oxc"    // oxlint's own built-in rule set
+  ],
+
+  "rules": {
+    // Enforce React's Rules of Hooks (no conditional/nested hook calls)
+    "react/rules-of-hooks": "error",
+
+    // Warn if a file exports non-component values alongside components,
+    // which can break Fast Refresh. Constant exports (e.g. simple values)
+    // are allowed without triggering the warning.
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
